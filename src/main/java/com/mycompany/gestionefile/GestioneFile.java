@@ -1,6 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
 
 package com.mycompany.gestionefile;
 import java.io.*;
@@ -69,6 +66,21 @@ public class GestioneFile {
         Scrittore scrittore = new Scrittore("output.csv", username+";"+matrice.cifra(password));
         Thread threadScrittore = new Thread(scrittore);
         threadScrittore.start();
+            try {
+                threadScrittore.join();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(GestioneFile.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        //Istanzio un Copiatore
+        Copiatore copiatore=new Copiatore("output.csv","copia.csv");
+        copiatore.start();
+        System.out.println("Copiatura Effettutata!!");
+            try {
+                copiatore.join();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(GestioneFile.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
     }
    }  
 }

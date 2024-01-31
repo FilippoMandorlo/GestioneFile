@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.gestionefile;
 import java.io.FileReader;
 import java.io.IOException;
@@ -46,13 +43,12 @@ public class Copiatore extends Thread {
     /**
      * scrivo il contenuto del file copiato,
      * nel file passato come secondo argomento del costruttore
-     */    
-     
-    
+     */ 
     public void copia(){
         Scrittore scrittore = new Scrittore(nomeFileFinale,this.leggi() );
         Thread threadScrittore = new Thread(scrittore);
         threadScrittore.start();
+        
          try {
             threadScrittore.join();
         } catch (InterruptedException ex) {
