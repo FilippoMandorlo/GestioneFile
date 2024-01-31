@@ -23,11 +23,11 @@ public class GestioneFile {
         } catch (InterruptedException ex) {
             Logger.getLogger(GestioneFile.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         //2)ELABORAZIONE
         String username = null;
         String password = null;
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        try {
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
             System.out.println("Inserisci l'username");
             username = br.readLine().toUpperCase();  
             System.out.println("Inserisci la password");
@@ -71,6 +71,10 @@ public class GestioneFile {
             } catch (InterruptedException ex) {
                 Logger.getLogger(GestioneFile.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+        
+        
+        // Fine issue 1 -- Copiatura
         //Istanzio un Copiatore
         Copiatore copiatore=new Copiatore("output.csv","copia.csv");
         copiatore.start();

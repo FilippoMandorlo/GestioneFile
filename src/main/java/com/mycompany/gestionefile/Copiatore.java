@@ -22,11 +22,10 @@ public class Copiatore extends Thread {
     
     public String leggi(){   
         StringBuilder sb= new StringBuilder();
-         FileReader fr;
+         // ISSUE 2 try with resurces
+         //1) apro il file
         int i; 
-        try { 
-            //1) apro il file
-            fr = new FileReader(nomeFileDaCopiare);
+        try (FileReader fr= new FileReader(nomeFileDaCopiare)){ 
             //2) leggo carattere per carattere e lo stampo 
             while ((i=fr.read()) != -1)
                 sb.append(((char) i));
